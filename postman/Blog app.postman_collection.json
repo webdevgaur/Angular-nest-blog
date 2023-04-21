@@ -11,6 +11,16 @@
 				"disableBodyPruning": true
 			},
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo4LCJuYW1lIjoiVGVzdHVzZXIyIiwidXNlcm5hbWUiOiJzb21ldXNlcm5hbWUyMyIsImVtYWlsIjoidGVzdGluZ0B0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiJ9LCJpYXQiOjE2ODIwNzM5NjcsImV4cCI6MTY4MjA4Mzk2N30.blHhYX_EW4CRBShfiyGNOXMhqF9N1eFi2VEPaOHyiMk",
+							"type": "string"
+						}
+					]
+				},
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -75,7 +85,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Sanskrit\",\r\n    \"username\": \"sans123\",\r\n    \"email\": \"sanskriti@happy.com\",\r\n    \"password\": \"simplePassword\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Testy Testerson\",\r\n    \"username\": \"test123\",\r\n    \"email\": \"testyistesting@test.com\",\r\n    \"password\": \"asdf\",\r\n    \"role\": \"admin\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -103,7 +113,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{   \r\n    \"username\": \"gauranurag\",\r\n    \"password\": \"implePassword\"\r\n}",
+					"raw": "{   \r\n    \"email\": \"testing@test.com\",\r\n    \"password\": \"sddfg\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -132,7 +142,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"id\": 1,\r\n    \"username\": \"babyOriginal\"\r\n}",
+					"raw": "{\r\n    \"username\": \"changed\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -140,7 +150,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/users/5",
+					"raw": "http://localhost:3000/users/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -148,7 +158,37 @@
 					"port": "3000",
 					"path": [
 						"users",
-						"5"
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update user role",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"role\": \"editor\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users/1/role",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users",
+						"1",
+						"role"
 					]
 				}
 			},
