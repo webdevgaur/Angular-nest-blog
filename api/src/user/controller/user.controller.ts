@@ -52,7 +52,6 @@ export class UserController {
     @UseGuards(JwtAuthGuard, RolesGuard)
     @Put(':id/role')
     updateRoleOfUser(@Param('id') id: string, @Body() user: User): Observable<User> {
-        console.log('updating role for id: ', id, ' and user: ', user.name)
         return this.userService.updateRoleOfUser(Number(id), user);
     }
 
