@@ -27,3 +27,8 @@
 
 </form>
 
+<h3 *ngIf="registerForm.controls.password.invalid">Form contains the following errors-</h3>
+<p *ngIf="registerForm.get('password')?.hasError('passwordInvalid')">Password not secure yet. Should contain at least one lowercase letter, one uppercase letter, one digit, one special character and should be 8 characters long</p>
+<p *ngIf="registerForm.hasError('passwordsNotMatching')">Passwords don't macth</p>
+
+ 
