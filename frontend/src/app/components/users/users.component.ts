@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { map, tap } from 'rxjs/operators';
 import { UserData, UserService } from 'src/app/services/user-service/user.service';
 
@@ -24,5 +25,16 @@ export class UsersComponent implements OnInit {
       map((userData: UserData) => this.dataSource = userData)
     ).subscribe();
   }
-;
+
+  onPaginateChange(event: PageEvent) {
+    let page = event.pageIndex;
+    let size = event.pageSize;
+
+    page += 1;
+
+    this.userService.findAll(page, size).pipe(
+      map((userData: UserData) => this.dataSource = userData)
+    ).subscribe();
+  }
+
 }
