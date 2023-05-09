@@ -5,22 +5,24 @@ import { map } from 'rxjs/internal/operators/map';
 import { AuthenticationService } from 'src/app/services/authentication-service/authentication.service';
 
 class CustomValidators {
-  static passwordIsCompliant(control: AbstractControl): ValidationErrors {
+
+  static passwordIsCompliant(control: AbstractControl): ValidationErrors | null {
     const regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
+    console.log(regex.test(control.value));
     if(regex.test(control.value) && control.value !== null) {
-      return [null];
+      return null;
     } else {
       return {passwordInvalid: true};
     }
 
   }
 
-  static passwordsMatch(control: AbstractControl): ValidationErrors {
+  static passwordsMatch(control: AbstractControl): ValidationErrors | null {
     const password = control.get('password')?.value;
     const confirmPassword = control.get('passwordConfirm')?.value;
 
     if(password !== null && confirmPassword !== null && password === confirmPassword) {
-      return [null];
+      return null;
     } else {
       return {passwordsNotMatching: true};
     }

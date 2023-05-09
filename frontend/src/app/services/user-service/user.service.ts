@@ -42,4 +42,21 @@ export class UserService {
     )
   }
 
+  paginateByName(page: number, size: number, username: string): Observable<UserData> {    
+
+    let params = new HttpParams();
+
+    params = params.append('page', String(page));
+    params = params.append('limit', String(size));
+    params = params.append('username', username);
+
+    return this.http.get('/api/users', {params}).pipe(
+      map((userData: UserData) => userData),
+      catchError(err => {
+        throw 'The following error has occured while trying to fetch all user entries: ' + err;
+      })
+    )
+  }
+
+
 }

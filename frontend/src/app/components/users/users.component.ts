@@ -12,6 +12,7 @@ export class UsersComponent implements OnInit {
 
   dataSource: UserData = null;
   displayColumns: string[] = ['id', 'name', 'username', 'email', 'role'];
+  filterValue: string;
   
   constructor(private userService: UserService) { }
   
@@ -21,7 +22,6 @@ export class UsersComponent implements OnInit {
 
   initDataSource() {
     this.userService.findAll(1, 10).pipe(
-      tap(users => console.log(users)),
       map((userData: UserData) => this.dataSource = userData)
     ).subscribe();
   }
@@ -33,6 +33,12 @@ export class UsersComponent implements OnInit {
     page += 1;
 
     this.userService.findAll(page, size).pipe(
+      map((userData: UserData) => this.dataSource = userData)
+    ).subscribe();
+  }
+
+  filterByName(username: string) {
+    this.userService.paginateByName(0, 10, username).pipe(
       map((userData: UserData) => this.dataSource = userData)
     ).subscribe();
   }

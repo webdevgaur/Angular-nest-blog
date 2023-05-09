@@ -22,7 +22,7 @@
             <input matInput type="password" placeholder="Your Password Again" formControlName="passwordConfirm">
             <mat-hint *ngIf="registerForm.get('passwordConfirm')?.errors">Password does not match</mat-hint>
         </mat-form-field>
-        <button mat-flat-button color="primary" [disabled]="!registerForm.valid" type="submit">Register</button>
+        <button mat-flat-button color="primary" [disabled]="registerForm.invalid" type="submit">Register</button>
     </div>
 
 </form>
