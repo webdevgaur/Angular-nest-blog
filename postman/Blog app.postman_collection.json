@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "ed65d026-5e46-4393-aaae-9ef3d3324094",
+		"_postman_id": "7439bd90-3543-4f7c-acfb-350e756a81ce",
 		"name": "Blog app",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27291604"
 	},
 	"item": [
 		{
@@ -16,7 +17,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo4LCJuYW1lIjoiVGVzdHVzZXIyIiwidXNlcm5hbWUiOiJzb21ldXNlcm5hbWUyMyIsImVtYWlsIjoidGVzdGluZ0B0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiJ9LCJpYXQiOjE2ODIwNzM5NjcsImV4cCI6MTY4MjA4Mzk2N30.blHhYX_EW4CRBShfiyGNOXMhqF9N1eFi2VEPaOHyiMk",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo4LCJuYW1lIjoiVGVzdHVzZXIyIiwidXNlcm5hbWUiOiJzb21ldXNlcm5hbWUyMyIsImVtYWlsIjoidGVzdGluZ0B0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiJ9LCJpYXQiOjE2ODM1MTY4NTcsImV4cCI6MTY4MzUyNjg1N30.xMBNfT957KMlL2OBcfEhHaWBu5SnMUBGwMjSpHq01nc",
 							"type": "string"
 						}
 					]
@@ -33,14 +34,25 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/users",
+					"raw": "http://localhost:3000/api/users?page=2&limit=2",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"users"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
 					]
 				}
 			},
@@ -64,13 +76,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/users/1",
+					"raw": "http://localhost:3000/api/users/1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"users",
 						"1"
 					]
@@ -85,7 +98,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Testy Testerson\",\r\n    \"username\": \"test123\",\r\n    \"email\": \"testyistesting@test.com\",\r\n    \"password\": \"asdf\",\r\n    \"role\": \"admin\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Andrew Bernanrd\",\r\n    \"username\": \"NardDog\",\r\n    \"email\": \"andrewb@dundermifflin.com\",\r\n    \"password\": \"asdf\",\r\n    \"role\": \"user\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -93,13 +106,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/users",
+					"raw": "http://localhost:3000/api/users",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"users"
 					]
 				}
@@ -121,13 +135,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/users/login",
+					"raw": "http://localhost:3000/api/users/login",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"users",
 						"login"
 					]
@@ -150,13 +165,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/users/6",
+					"raw": "http://localhost:3000/api/users/6",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"users",
 						"6"
 					]
@@ -179,13 +195,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/users/1/role",
+					"raw": "http://localhost:3000/api/users/1/role",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"users",
 						"1",
 						"role"
@@ -200,13 +217,14 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/users/4",
+					"raw": "http://localhost:3000/api/users/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
+						"api",
 						"users",
 						"4"
 					]
