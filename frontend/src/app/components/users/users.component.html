@@ -1,10 +1,9 @@
 <h1 style="text-align: center;">All users</h1>
 <mat-form-field>
     <mat-label>Filter by username</mat-label>
-    <input matInput type="text" [(ngModel)]="filterValue" (input)="filterByName(filterValue)">
+    <input matInput type="text" [(ngModel)]="filterValue" (input)="findByName(filterValue)">
     <mat-hint>Case sensitive</mat-hint>
 </mat-form-field>
-{{filterValue}}
 <div *ngIf="dataSource">
     <mat-table [dataSource]="dataSource.items">
 
