@@ -7,5 +7,12 @@ module.exports = defineConfig({
       // implement node event listeners here
     },
     testIsolation: false,
+    reporter: 'mochawesome',
+    reporterOptions: {
+      overwrite: false,
+      html: false,
+      json: true,
+    },
   },
+  
 });
