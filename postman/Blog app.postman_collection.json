@@ -17,7 +17,7 @@
 					"bearer": [
 						{
 							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo4LCJuYW1lIjoiVGVzdHVzZXIyIiwidXNlcm5hbWUiOiJzb21ldXNlcm5hbWUyMyIsImVtYWlsIjoidGVzdGluZ0B0ZXN0LmNvbSIsInJvbGUiOiJhZG1pbiJ9LCJpYXQiOjE2ODM1MTY4NTcsImV4cCI6MTY4MzUyNjg1N30.xMBNfT957KMlL2OBcfEhHaWBu5SnMUBGwMjSpHq01nc",
+							"value": "{{acess_token}}",
 							"type": "string"
 						}
 					]
@@ -34,7 +34,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/users?page=2&limit=2",
+					"raw": "http://localhost:3000/api/users?username=tes&page=0",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -46,12 +46,12 @@
 					],
 					"query": [
 						{
-							"key": "page",
-							"value": "2"
+							"key": "username",
+							"value": "tes"
 						},
 						{
-							"key": "limit",
-							"value": "2"
+							"key": "page",
+							"value": "0"
 						}
 					]
 				}
@@ -98,7 +98,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Andrew Bernanrd\",\r\n    \"username\": \"NardDog\",\r\n    \"email\": \"andrewb@dundermifflin.com\",\r\n    \"password\": \"asdf\",\r\n    \"role\": \"user\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Biswarup Chatterjee\",\r\n    \"username\": \"jeetu4u\",\r\n    \"email\": \"biswarup@bilaspur.com\",\r\n    \"password\": \"asdfgh\",\r\n    \"role\": \"user\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -227,6 +227,92 @@
 						"api",
 						"users",
 						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upload profile image",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{acess_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Projects/Angular-nest-blog/user icon.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/upload",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get image from db",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{acess_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Projects/Angular-nest-blog/user icon.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/users/profile-image/usericona397cb4a-2bbe-49df-8908-7e38060fd2e0.png",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						"profile-image",
+						"usericona397cb4a-2bbe-49df-8908-7e38060fd2e0.png"
 					]
 				}
 			},
