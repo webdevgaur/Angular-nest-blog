@@ -34,7 +34,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/users?username=tes&page=0",
+					"raw": "http://localhost:3000/api/users",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -43,16 +43,6 @@
 					"path": [
 						"api",
 						"users"
-					],
-					"query": [
-						{
-							"key": "username",
-							"value": "tes"
-						},
-						{
-							"key": "page",
-							"value": "0"
-						}
 					]
 				}
 			},
@@ -76,7 +66,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/users/1",
+					"raw": "http://localhost:3000/api/users/16",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -85,7 +75,7 @@
 					"path": [
 						"api",
 						"users",
-						"1"
+						"16"
 					]
 				}
 			},
@@ -153,11 +143,21 @@
 		{
 			"name": "update user by id",
 			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{acess_token}}",
+							"type": "string"
+						}
+					]
+				},
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"username\": \"changed\"\r\n}",
+					"raw": "{\r\n    \"username\": \"thishaschanged5\",\r\n    \"name\": \"Namely nameson\",\r\n    \"email\": \"willnotwork\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -165,7 +165,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/users/6",
+					"raw": "http://localhost:3000/api/users/8",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -174,7 +174,7 @@
 					"path": [
 						"api",
 						"users",
-						"6"
+						"8"
 					]
 				}
 			},
@@ -195,7 +195,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/users/1/role",
+					"raw": "http://localhost:3000/api/users/16/role",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -204,7 +204,7 @@
 					"path": [
 						"api",
 						"users",
-						"1",
+						"16",
 						"role"
 					]
 				}
