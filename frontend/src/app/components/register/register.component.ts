@@ -8,7 +8,6 @@ class CustomValidators {
 
   static passwordIsCompliant(control: AbstractControl): ValidationErrors | null {
     const regex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/;
-    console.log(regex.test(control.value));
     if(regex.test(control.value) && control.value !== null) {
       return null;
     } else {
