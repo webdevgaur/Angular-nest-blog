@@ -15,6 +15,7 @@ export interface User {
   password?: string;
   role?: string;
   // passwordConfirm?: string;
+  profileImage?: string;
 };
 
 export const JWT_NAME = 'blog-token';
