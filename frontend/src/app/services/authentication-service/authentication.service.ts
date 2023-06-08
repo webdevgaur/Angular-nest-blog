@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { map, tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs/internal/Observable';
+import { of } from 'rxjs/internal/observable/of';
 
 export interface LoginForm {
   email: string;
@@ -9,6 +11,7 @@ export interface LoginForm {
 };
 
 export interface User {
+  id?: any;
   name?: string;
   username?: string;
   email?: string;
@@ -46,6 +49,16 @@ export class AuthenticationService {
   isAuthenticated(): boolean {
     const token = localStorage.getItem(JWT_NAME);
     return !this.jwtHelper.isTokenExpired(token);
+  }
+
+  getUserId(): Observable<number> {
+    return of(localStorage.getItem(JWT_NAME)).pipe(
+      switchMap((jwt: string) => of(this.jwtHelper.decodeToken(jwt)).pipe(
+        tap((jwt: any) => console.log(jwt)),
+        map((jwt: any) => jwt.user.id)
+      )
+      )
+    )
   }
 
 }
