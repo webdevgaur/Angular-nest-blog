@@ -66,7 +66,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:3000/api/users/16",
+					"raw": "http://localhost:3000/api/users/19",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -75,7 +75,7 @@
 					"path": [
 						"api",
 						"users",
-						"16"
+						"19"
 					]
 				}
 			},
@@ -88,7 +88,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\": \"Biswarup Chatterjee\",\r\n    \"username\": \"jeetu4u\",\r\n    \"email\": \"biswarup@bilaspur.com\",\r\n    \"password\": \"asdfgh\",\r\n    \"role\": \"user\"\r\n}",
+					"raw": "{\r\n    \"name\": \"Chhota Pucchu\",\r\n    \"username\": \"smolboi\",\r\n    \"email\": \"pucchu@them.com\",\r\n    \"password\": \"asd\",\r\n    \"role\": \"admin\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -117,7 +117,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{   \r\n    \"email\": \"testing@test.com\",\r\n    \"password\": \"sddfg\"\r\n}",
+					"raw": "{   \r\n    \"email\": \"pucchu@them.com\",\r\n    \"password\": \"asd\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -253,7 +253,7 @@
 						{
 							"key": "file",
 							"type": "file",
-							"src": "/C:/Projects/Angular-nest-blog/user icon.png"
+							"src": "/C:/Users/Anurag Gaur/OneDrive/Desktop/jigglypuff.png"
 						}
 					]
 				},
@@ -313,6 +313,130 @@
 						"users",
 						"profile-image",
 						"usericona397cb4a-2bbe-49df-8908-7e38060fd2e0.png"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create(save) a blog entry",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{acess_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Test title\",\r\n    \"description\": \"This is a test description.\",\r\n    \"body\": \"More than 40% of all employees were thinking about leaving their jobs at the beginning of 2021, and as the year went on, workers quit in unprecedented numbers.1 Between April and September 2021, more than 24 million American employees left their jobs, an all-time record.2 As the Great Resignation rolls on, business leaders are struggling to make sense of the factors driving the mass exodus. More importantly, they are looking for ways to hold on to valued employees. To better understand the sources of the Great Resignation and help leaders respond effectively, we analyzed 34 million online employee profiles to identify U.S. workers who left their employer for any reason (including quitting, retiring, or being laid off) between April and September 2021.3 The data, from Revelio Labs, where one of us (Ben) is the CEO, enabled us to estimate company-level attrition rates for the Culture 500, a sample of large, mainly for-profit companies that together employ nearly one-quarter of the private-sector workforce in the United States.4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/blogs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"blogs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get blog entry by userid",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{acess_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Test title\",\r\n    \"description\": \"This is a test description.\",\r\n    \"body\": \"More than 40% of all employees were thinking about leaving their jobs at the beginning of 2021, and as the year went on, workers quit in unprecedented numbers.1 Between April and September 2021, more than 24 million American employees left their jobs, an all-time record.2 As the Great Resignation rolls on, business leaders are struggling to make sense of the factors driving the mass exodus. More importantly, they are looking for ways to hold on to valued employees. To better understand the sources of the Great Resignation and help leaders respond effectively, we analyzed 34 million online employee profiles to identify U.S. workers who left their employer for any reason (including quitting, retiring, or being laid off) between April and September 2021.3 The data, from Revelio Labs, where one of us (Ben) is the CEO, enabled us to estimate company-level attrition rates for the Culture 500, a sample of large, mainly for-profit companies that together employ nearly one-quarter of the private-sector workforce in the United States.4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/blogs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"blogs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get blog entry by blogId",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{acess_token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Test title\",\r\n    \"description\": \"This is a test description.\",\r\n    \"body\": \"More than 40% of all employees were thinking about leaving their jobs at the beginning of 2021, and as the year went on, workers quit in unprecedented numbers.1 Between April and September 2021, more than 24 million American employees left their jobs, an all-time record.2 As the Great Resignation rolls on, business leaders are struggling to make sense of the factors driving the mass exodus. More importantly, they are looking for ways to hold on to valued employees. To better understand the sources of the Great Resignation and help leaders respond effectively, we analyzed 34 million online employee profiles to identify U.S. workers who left their employer for any reason (including quitting, retiring, or being laid off) between April and September 2021.3 The data, from Revelio Labs, where one of us (Ben) is the CEO, enabled us to estimate company-level attrition rates for the Culture 500, a sample of large, mainly for-profit companies that together employ nearly one-quarter of the private-sector workforce in the United States.4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/blogs/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"blogs",
+						"2"
 					]
 				}
 			},
