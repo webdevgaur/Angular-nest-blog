@@ -29,9 +29,6 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  // login() {
-  //   this.authService.login('test@email.com', 'abcdefghi').subscribe(data => console.log())
-  // }
 
   onSubmit() {
     if(this.loginForm.invalid) {

@@ -71,7 +71,6 @@ export class RegisterComponent implements OnInit {
     if(this.registerForm.invalid) {
       return;
     }
-    console.log('Form value', this.registerForm.value);
     this.authService.register(this.registerForm.value).pipe(
       map(user => this.router.navigate(['login']))
     ).subscribe();

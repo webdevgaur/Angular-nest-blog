@@ -95,7 +95,6 @@ export class UserController {
     uploadFile(@UploadedFile() file, @Request() req): Observable<Object> {
         const user: User = req.user;
         return this.userService.updateOne(user.id, {profileImage: file.filename}).pipe(
-            tap((user: User) => console.log(user)),
             map((user: User) => ({profileImage: user.profileImage}))
         );
     }
