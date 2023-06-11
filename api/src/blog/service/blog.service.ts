@@ -8,9 +8,10 @@ import { Repository } from 'typeorm';
 import { UserService } from 'src/user/service/user.service';
 import slugify from 'slugify';
 import { of } from 'rxjs/internal/observable/of';
-import { switchMap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { from } from 'rxjs/internal/observable/from';
 import { UserEntity } from 'src/user/models/user.entity';
+import { IPaginationOptions, Pagination, paginate } from 'nestjs-typeorm-paginate';
 
 @Injectable()
 export class BlogService {
@@ -66,6 +67,19 @@ export class BlogService {
 
     deleteOne(id: number): Observable<any> {
         return from(this.blogRepository.delete(id));
+    }
+
+    paginateAll(options: IPaginationOptions): Observable<Pagination<BlogEntry>> {
+        return from(paginate<BlogEntry>(this.blogRepository, options, {
+            relations: ['author'],
+        }))
+    }
+
+    paginateByUser(options: IPaginationOptions, userId: number): Observable<Pagination<BlogEntry>> {
+        return from(paginate<BlogEntry>(this.blogRepository, options, {
+            relations: ['author'],
+            where: [{author: { id: userId}}]
+        }))
     }
 
 

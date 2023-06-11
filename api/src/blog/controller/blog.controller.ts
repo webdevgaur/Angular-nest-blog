@@ -1,11 +1,13 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Query, Request, UseGuards } from '@nestjs/common';
+import { Body, Controller, DefaultValuePipe, Delete, Get, Param, ParseIntPipe, Post, Put, Query, Request, UseGuards } from '@nestjs/common';
 import { BlogService } from '../service/blog.service';
 import { Observable } from 'rxjs';
 import { BlogEntry } from '../model/blog-entry.interface';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-guard';
 import { UserIsAuthorGuard } from '../guards/user-is-author.guard';
 
-@Controller('blogs')
+export const BLOG_ENTRIES_URL = 'http://localhost:3000/blog-entries';
+
+@Controller('blog-entries')
 export class BlogController {
 
     constructor(
@@ -20,12 +22,30 @@ export class BlogController {
     }
 
     @Get()
-    findBlogEntries(@Query('userId') userId: number): Observable<BlogEntry[]> {
-        if(userId == null) {
-            return this.blogService.findAll();
-        } else {
-            return this.blogService.findByUser(userId);
-        }        
+    index(
+        @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number = 1,
+        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number = 10,
+    ) {
+        limit = limit > 100 ? 100 : limit;
+        return this.blogService.paginateAll({
+            page,
+            limit,
+            route: BLOG_ENTRIES_URL,
+        });
+    }
+
+    @Get('user/:userId')
+    indexByUser(
+        @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number = 1,
+        @Query('limit', new DefaultValuePipe(10), ParseIntPipe) limit: number = 10,
+        @Param('userId') userId: number,
+    ) {
+        limit = limit > 100 ? 100 : limit;
+        return this.blogService.paginateByUser({
+            page,
+            limit,
+            route: BLOG_ENTRIES_URL,
+        }, Number(userId));
     }
 
     @Get(':id')
