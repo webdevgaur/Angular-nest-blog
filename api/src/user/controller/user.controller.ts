@@ -1,4 +1,3 @@
-import { tap } from 'rxjs/operators';
 import { Observable, catchError, map, of } from 'rxjs';
 import { Body, Controller, Get, Post, Param, Delete, Put, UseGuards, DefaultValuePipe, ParseIntPipe, Query, UseInterceptors, UploadedFile, Request, Res } from '@nestjs/common';
 import { UserService } from '../service/user.service';
