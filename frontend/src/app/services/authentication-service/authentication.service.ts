@@ -4,21 +4,11 @@ import { map, switchMap, tap } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs/internal/Observable';
 import { of } from 'rxjs/internal/observable/of';
+import { User } from 'src/app/models/user.interface';
 
 export interface LoginForm {
   email: string;
   password: string;
-};
-
-export interface User {
-  id?: any;
-  name?: string;
-  username?: string;
-  email?: string;
-  password?: string;
-  role?: string;
-  // passwordConfirm?: string;
-  profileImage?: string;
 };
 
 export const JWT_NAME = 'blog-token';
