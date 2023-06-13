@@ -39,10 +39,10 @@
     </mat-table>
 
     <mat-paginator 
-              [length]="dataSource.meta.totalItems"
-              [pageSize]="dataSource.meta.itemsPerPage"
-              [pageSizeOptions]="[5, 10, 25, 100]"
-              (page)="onPaginateChange($event)"
-              showFirstLastButtons>
-        </mat-paginator>
+        [length]="dataSource.meta.totalItems"
+        [pageSize]="dataSource.meta.itemsPerPage"
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        (page)="onPaginateChange($event)"
+        showFirstLastButtons>
+    </mat-paginator>
 </div>

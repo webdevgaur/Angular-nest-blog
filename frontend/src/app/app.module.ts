@@ -26,6 +26,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatIconModule} from '@angular/material/icon';
 import { HomeComponent } from './components/home/home.component';
 import { AllBlogEntriesComponent } from './components/all-blog-entries/all-blog-entries.component';
+import { CreateBlogEntryComponent } from './components/create-blog-entry/create-blog-entry.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { AllBlogEntriesComponent } from './components/all-blog-entries/all-blog-
     UpdateUserProfileComponent,
     UserProfileComponent,
     HomeComponent,
-    AllBlogEntriesComponent
+    AllBlogEntriesComponent,
+    CreateBlogEntryComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +58,7 @@ import { AllBlogEntriesComponent } from './components/all-blog-entries/all-blog-
     MatCardModule,
     MatProgressBarModule,
     MatIconModule,
+    MarkdownModule.forRoot(),
   ],
   providers: [
     JwtHelperService,

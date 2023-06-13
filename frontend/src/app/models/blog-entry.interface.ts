@@ -36,3 +36,9 @@ export interface BlogEntriesPageable {
     meta: Meta;
     links: Links;
 }
+
+export interface File {
+    data: any;
+    progress: number;
+    inProgress: boolean;
+}

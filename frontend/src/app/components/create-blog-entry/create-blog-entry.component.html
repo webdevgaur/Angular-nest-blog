@@ -1,0 +1,47 @@
+<form [formGroup]="form" >
+
+    <div>
+        <mat-card class="container">
+            <div style="width: 80%">
+                <mat-card>
+                    <mat-card-content>
+                        <img *ngIf="form.get('headerImage').value" src="http://localhost:3000/api/blog-entries/image/{{form.get('headerImage').value}}">
+                        <mat-progress-bar [value]="file.progress"></mat-progress-bar>
+                        <mat-card-actions>
+                            <button mat-button color="warn" (click)="onClick()">
+                                <mat-icon>add_photo_alternate</mat-icon>
+                                <small>Upload Image</small>                                
+                            </button>
+                        </mat-card-actions>
+                    </mat-card-content>
+                </mat-card>
+                <input type="file" #fileUpload id="fileUpload" name="fileUpload" accept="image/*" style="display: none;">
+            </div>
+            <div class="conatainer" style="width: 80%">
+                <mat-form-field>
+                    <mat-label>ID</mat-label>
+                    <input matInput placeholder="Id" formControlName="id">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Title</mat-label>
+                    <input matInput placeholder="Enter blog title" formControlName="title">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Description</mat-label>
+                    <input matInput placeholder="Enter blog description" formControlName="description">
+                </mat-form-field>
+                <div style="display: flex; width: 100%">                
+                    <mat-form-field style="width: 45%;">
+                        <mat-label>Body</mat-label>
+                        <!-- <input matInput placeholder="Enter the body of the blog" formControlName="body"> -->
+                        <textarea matInput rows="15" placeholder="Enter body markdown..." formControlName="body" class="variable-textarea"></textarea>
+                    </mat-form-field>
+                    <markdown [data]="form.get('body').value" style="border-style: dotted; width: 45%; margin-left: 10%;"></markdown>
+                </div>
+            </div>
+
+            <button mat-flat-button color="primary" [disabled]="form.invalid" type="submit" style="margin-top: 1rem;" (click)="post()">Submit blog</button>
+        </mat-card>
+        
+    </div>
+</form>

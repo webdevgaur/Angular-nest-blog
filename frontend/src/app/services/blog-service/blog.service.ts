@@ -1,4 +1,4 @@
-import { BlogEntriesPageable } from './../../models/blog-entry.interface';
+import { BlogEntriesPageable, BlogEntry } from './../../models/blog-entry.interface';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -17,9 +17,18 @@ export class BlogService {
     params = params.append('page', String(page));
     params = params.append('limit', String(limit));
 
-    return this.http.get<BlogEntriesPageable>('/api/blog-entries', {params}).pipe(
-      tap((a) => console.log(a))
-    );
+    return this.http.get<BlogEntriesPageable>('/api/blog-entries', {params});
+  }
+
+  post(blogEntry: BlogEntry): Observable<BlogEntry> {
+    return this.http.post<BlogEntry>('/api/blog-entries', blogEntry);
+  }
+
+  uploadHeaderImage(formData: FormData): Observable<any> {
+    return this.http.post<FormData>('/api/blog-entries/image/upload', formData, {
+      reportProgress: true,
+      observe: 'events'
+    });
   }
 
 }
