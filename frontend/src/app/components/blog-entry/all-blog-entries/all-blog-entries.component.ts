@@ -19,6 +19,10 @@ export class AllBlogEntriesComponent implements OnInit {
 
   }
 
+  setBlogIdForDisplay(id: number): void {
+    localStorage.setItem('blogIdForDisplay', String(id));
+  }
+
   onPaginateChange(event: PageEvent) {
     let page = event.pageIndex;
     let limit = event.pageSize;

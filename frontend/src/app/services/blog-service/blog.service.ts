@@ -11,6 +11,12 @@ export class BlogService {
 
   constructor(private http: HttpClient) { }
 
+  blogIdForDisplay: number;
+
+  findOne(id: number): Observable<BlogEntry> {
+    return this.http.get<BlogEntry>(`/api/blog-entries/${id}`);
+  }
+
   indexAll(page: number, limit: number): Observable<BlogEntriesPageable> {
     let params = new HttpParams();
 
@@ -30,5 +36,6 @@ export class BlogService {
       observe: 'events'
     });
   }
+
 
 }

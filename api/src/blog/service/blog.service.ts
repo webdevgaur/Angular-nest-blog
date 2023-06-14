@@ -72,13 +72,19 @@ export class BlogService {
     paginateAll(options: IPaginationOptions): Observable<Pagination<BlogEntry>> {
         return from(paginate<BlogEntry>(this.blogRepository, options, {
             relations: ['author'],
+            order: {
+                createdAt: 'DESC',
+            }
         }))
     }
 
     paginateByUser(options: IPaginationOptions, userId: number): Observable<Pagination<BlogEntry>> {
         return from(paginate<BlogEntry>(this.blogRepository, options, {
             relations: ['author'],
-            where: [{author: { id: userId}}]
+            where: [{author: { id: userId}}],
+            order: {
+                createdAt: 'DESC',
+            }
         }))
     }
 
