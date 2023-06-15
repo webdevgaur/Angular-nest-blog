@@ -1,8 +1,9 @@
 import { Observable } from 'rxjs/internal/Observable';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BlogEntriesPageable } from 'src/app/models/blog-entry.interface';
 import { BlogService } from 'src/app/services/blog-service/blog.service';
 import { PageEvent } from '@angular/material/paginator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-blog-entries',
@@ -11,26 +12,28 @@ import { PageEvent } from '@angular/material/paginator';
 })
 export class AllBlogEntriesComponent implements OnInit {
 
-  dataSource: Observable<BlogEntriesPageable> = this.blogService.indexAll(1, 10);
+  @Input() blogEntries: BlogEntriesPageable;
+  @Output() paginate: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
 
-  constructor(private blogService: BlogService) { }
+  pageEvent: PageEvent;
+  // console = console;
+
+  constructor(
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
 
   }
 
-  setBlogIdForDisplay(id: number): void {
+  setBlogIdForDisplay(id: number, slug: string): void {
     localStorage.setItem('blogIdForDisplay', String(id));
+    this.router.navigateByUrl(`/blog-entries/${slug}`);
   }
 
   onPaginateChange(event: PageEvent) {
-    let page = event.pageIndex;
-    let limit = event.pageSize;
-
-    page += 1;
-
-    this.dataSource = this.blogService.indexAll(page, limit);
-
+    event.pageIndex += 1;
+    this.paginate.emit(event);
   }
 
 }

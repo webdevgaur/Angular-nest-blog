@@ -26,6 +26,15 @@ export class BlogService {
     return this.http.get<BlogEntriesPageable>('/api/blog-entries', {params});
   }
 
+  indexByUser(userId: number, page: number, limit: number): Observable<BlogEntriesPageable> {
+    let params = new HttpParams();
+
+    params = params.append('page', String(page));
+    params = params.append('limit', String(limit));
+
+    return this.http.get<BlogEntriesPageable>(`/api/blog-entries/user/${userId}`, {params});
+  }
+
   post(blogEntry: BlogEntry): Observable<BlogEntry> {
     return this.http.post<BlogEntry>('/api/blog-entries', blogEntry);
   }
