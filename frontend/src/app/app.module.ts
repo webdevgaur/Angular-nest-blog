@@ -29,6 +29,8 @@ import { UsersComponent } from './components/user/users/users.component';
 import { UpdateUserProfileComponent } from './components/user/update-user-profile/update-user-profile.component';
 import { CreateBlogEntryComponent } from './components/blog-entry/create-blog-entry/create-blog-entry.component';
 import { ViewBlogEntryComponent } from './components/blog-entry/view-blog-entry/view-blog-entry.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { WINDOW, WINDOW_PROVIDERS } from './window-token';
 
 @NgModule({
   declarations: [
@@ -61,8 +63,10 @@ import { ViewBlogEntryComponent } from './components/blog-entry/view-blog-entry/
     MatProgressBarModule,
     MatIconModule,
     MarkdownModule.forRoot(),
+    MatProgressSpinnerModule,
   ],
   providers: [
+    WINDOW_PROVIDERS,
     JwtHelperService,
     {
       provide: JWT_OPTIONS,

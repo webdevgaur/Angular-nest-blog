@@ -1,11 +1,12 @@
 import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { of } from 'rxjs/internal/observable/of';
 import { catchError, map, tap } from 'rxjs/operators';
 import { File } from 'src/app/models/blog-entry.interface';
 import { BlogService } from 'src/app/services/blog-service/blog.service';
+import { WINDOW } from 'src/app/window-token';
 
 @Component({
   selector: 'app-create-blog-entry',
@@ -25,10 +26,15 @@ export class CreateBlogEntryComponent implements OnInit {
     inProgress: false,
   }
 
+  isLoading: boolean = false;
+
+  origin = this.window.location.origin;
+
   constructor(
     private formBuilder: FormBuilder,
     private blogService: BlogService,
     private router: Router,
+    @Inject(WINDOW) private window: Window,
   ) { }
 
   ngOnInit(): void {
@@ -43,8 +49,12 @@ export class CreateBlogEntryComponent implements OnInit {
   }
 
   post() {
+    this.isLoading = true;
     this.blogService.post(this.form.getRawValue()).pipe(
-      tap(() => this.router.navigate(['../'])),
+      tap(() => {
+        this.isLoading = false;
+        this.router.navigate(['../'])
+      }),
     ).subscribe();
   }
 

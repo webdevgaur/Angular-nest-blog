@@ -1,5 +1,5 @@
 import { HttpErrorResponse, HttpEvent, HttpEventType } from '@angular/common/http';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { of } from 'rxjs/internal/observable/of';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
@@ -7,6 +7,8 @@ import { User } from 'src/app/models/user.interface';
 import { AuthenticationService } from 'src/app/services/authentication-service/authentication.service';
 import { UserService } from 'src/app/services/user-service/user.service';
 import { File } from '../../../models/blog-entry.interface'
+import { WINDOW } from 'src/app/window-token';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-user-profile',
@@ -18,6 +20,7 @@ export class UpdateUserProfileComponent implements OnInit {
   @ViewChild('fileUpload', {static: false}) fileUpload: ElementRef;
 
   form: FormGroup;
+  userId: number;
 
   file: File = {
     data: null,
@@ -25,10 +28,16 @@ export class UpdateUserProfileComponent implements OnInit {
     inProgress: false,
   }
 
+  isLoading: boolean = false;
+
+  origin = this.window.location.origin;
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthenticationService,
     private userService: UserService,
+    @Inject(WINDOW) private window: Window,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -46,7 +55,8 @@ export class UpdateUserProfileComponent implements OnInit {
             name: user.name,
             username: user.username,
             profileImage: user.profileImage,
-          })
+          });
+          this.userId = user.id;
         })
       ))
     ).subscribe();
@@ -94,7 +104,11 @@ export class UpdateUserProfileComponent implements OnInit {
   }
 
   update() {
-    this.userService.updateOne(this.form.getRawValue()).subscribe();
+    this.isLoading = true;
+    localStorage.getItem('userId');
+    this.userService.updateOne(this.form.getRawValue()).subscribe(() => this.isLoading = false);
+    this.router.navigate([`../users/${this.userId}`]);
+
   }
 
 }

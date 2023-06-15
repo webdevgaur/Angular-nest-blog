@@ -1,9 +1,10 @@
 import { Observable } from 'rxjs/internal/Observable';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { BlogEntriesPageable } from 'src/app/models/blog-entry.interface';
 import { BlogService } from 'src/app/services/blog-service/blog.service';
 import { PageEvent } from '@angular/material/paginator';
 import { Router } from '@angular/router';
+import { WINDOW } from 'src/app/window-token';
 
 @Component({
   selector: 'app-all-blog-entries',
@@ -16,10 +17,12 @@ export class AllBlogEntriesComponent implements OnInit {
   @Output() paginate: EventEmitter<PageEvent> = new EventEmitter<PageEvent>();
 
   pageEvent: PageEvent;
-  // console = console;
+
+  origin = this.window.location.origin;
 
   constructor(
     private router: Router,
+    @Inject(WINDOW) private window: Window,
   ) { }
 
   ngOnInit(): void {
